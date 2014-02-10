@@ -20,7 +20,6 @@ FORGE
       puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
     puppetlabs/sqlite (0.0.1)
     puppetlabs/stdlib (4.1.0)
-    puppetlabs/vcsrepo (0.2.0)
     ripienaar/concat (0.2.0)
 
 GIT
@@ -45,7 +44,6 @@ GIT
   sha: 80d67f556110c0b594d85ac4568818044500d4bf
   specs:
     rvm (1.4.2)
-      apache (>= 0)
       puppetlabs/apache (>= 0.9.0)
       puppetlabs/stdlib (>= 3.2.0)
 
@@ -54,9 +52,6 @@ GIT
   ref: mod-passenger
   sha: a47d60464de64d5fe4f75532c4ce90c93777ffed
   specs:
-    apache (0.11.0)
-      puppetlabs/concat (>= 1.0.0)
-      puppetlabs/stdlib (>= 2.4.0)
     puppetlabs/apache (0.11.0)
       puppetlabs/concat (>= 1.0.0)
       puppetlabs/stdlib (>= 2.4.0)
@@ -67,18 +62,6 @@ GIT
   sha: ee451898f7fe3493a24a47a2cdf2c1a65d67c3af
   specs:
     jonoterc/csrterc (0.0.1)
-      apache (>= 0)
-      attachmentgenie/ssh (= 1.2.1)
-      example42/monit (= 2.0.13)
-      netatalk (>= 0)
-      puppetlabs/apt (= 1.4.0)
-      puppetlabs/mysql (= 2.1.0)
-      puppetlabs/postgresql (= 3.2.0)
-      puppetlabs/sqlite (= 0.0.1)
-      puppetlabs/stdlib (= 4.1.0)
-      puppetlabs/vcsrepo (= 0.2.0)
-      rvm (>= 0)
-      samba (>= 0)
 
 GIT
   remote: https://github.com/jonoterc/puppetlabs-vcsrepo.git

@@ -67,6 +67,11 @@ $default_hiera = $csrterc_data['default']
   -> package { 'imagemagick':
     ensure => 'present' ,
   }
+  
+  # lynx for reviewing locally
+  -> package { 'lynx':
+    ensure => 'present' ,
+  }
 
 #####
 #####
@@ -162,9 +167,11 @@ $default_hiera = $csrterc_data['default']
 		share_path => '/var/sites/playground' ,
   }
 
-  -> csrterc::developer::mysql_db { 'dev_development':
+  -> csrterc::developer::mysql_db { 'dev':
   }
-  -> csrterc::developer::mysql_db { 'dev_test':
+  -> csrterc::developer::mysql_db { 'playground_development':
+  }
+  -> csrterc::developer::mysql_db { 'playground_test':
   }
 
 }

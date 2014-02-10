@@ -1,9 +1,10 @@
-.rspec_system
-.vagrant
 .bundle
 .*sw*
-puppet/modules
-puppet/.librarian
-puppet/.tmp
-puppet/hiera/*.yaml
-!puppet/hiera/*.yaml.example
+vagrant/.rspec_system
+vagrant/.vagrant
+vagrant/puppet/modules
+vagrant/puppet/.librarian
+vagrant/puppet/.tmp
+vagrant/puppet/hiera/*.yaml
+!vagrant/puppet/hiera/*.yaml.example
+working/*
