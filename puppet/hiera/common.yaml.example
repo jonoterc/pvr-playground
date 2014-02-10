@@ -1,0 +1,16 @@
+---
+csrterc:
+  default:
+    developer:
+      dev:
+        user:
+          plaintext_password: "playground"
+          hashed_password: "$6$OJ6bokrl$CJwO9.pptHvcjudIVehIlYzZMveXeBzx7cD/VptPVpDwSriE7l6NSZ4qlC5gcE8iZcDt14AYXb4TUFtx.dbzh1" # Ubuntu 1204 hash of "playground"
+        smb_share:
+          password: "playground"
+
+    webserver:
+      smb_share:
+        playground:
+          password: "playground"
+        

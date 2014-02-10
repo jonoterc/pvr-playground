@@ -1,0 +1,104 @@
+FORGE
+  remote: http://forge.puppetlabs.com
+  specs:
+    attachmentgenie/ssh (1.2.1)
+      puppetlabs/stdlib (>= 2.2.1)
+    example42/monit (2.0.13)
+      example42/puppi (>= 2.0.0)
+    example42/puppi (2.1.7)
+    puppetlabs/apt (1.4.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/concat (1.1.0-rc1)
+      puppetlabs/stdlib (>= 3.0.0)
+    puppetlabs/firewall (0.4.2)
+    puppetlabs/mysql (2.1.0)
+      puppetlabs/stdlib (>= 2.2.1)
+    puppetlabs/postgresql (3.2.0)
+      puppetlabs/apt (< 2.0.0, >= 1.1.0)
+      puppetlabs/concat (< 2.0.0, >= 1.0.0)
+      puppetlabs/firewall (>= 0.0.4)
+      puppetlabs/stdlib (< 5.0.0, >= 3.2.0)
+    puppetlabs/sqlite (0.0.1)
+    puppetlabs/stdlib (4.1.0)
+    puppetlabs/vcsrepo (0.2.0)
+    ripienaar/concat (0.2.0)
+
+GIT
+  remote: git://github.com/ajjahn/puppet-samba.git
+  ref: master
+  sha: eb089b5b477b08ee1b8c211bb33b6fdf67ca887f
+  specs:
+    samba (0.1.2)
+
+GIT
+  remote: git://github.com/jonoterc/puppet-netatalk.git
+  ref: master
+  sha: 1d553f184cd19eba9a6221842573ef9d5900e5ba
+  specs:
+    netatalk (0.1.0)
+      puppetlabs/stdlib (>= 2.0)
+      ripienaar/concat (>= 0.1)
+
+GIT
+  remote: git://github.com/jonoterc/puppet-rvm.git
+  ref: mod-passenger
+  sha: 80d67f556110c0b594d85ac4568818044500d4bf
+  specs:
+    rvm (1.4.2)
+      apache (>= 0)
+      puppetlabs/apache (>= 0.9.0)
+      puppetlabs/stdlib (>= 3.2.0)
+
+GIT
+  remote: git://github.com/jonoterc/puppetlabs-apache.git
+  ref: mod-passenger
+  sha: a47d60464de64d5fe4f75532c4ce90c93777ffed
+  specs:
+    apache (0.11.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 2.4.0)
+    puppetlabs/apache (0.11.0)
+      puppetlabs/concat (>= 1.0.0)
+      puppetlabs/stdlib (>= 2.4.0)
+
+GIT
+  remote: https://github.com/jonoterc/puppet-csrterc.git
+  ref: master
+  sha: ee451898f7fe3493a24a47a2cdf2c1a65d67c3af
+  specs:
+    jonoterc/csrterc (0.0.1)
+      apache (>= 0)
+      attachmentgenie/ssh (= 1.2.1)
+      example42/monit (= 2.0.13)
+      netatalk (>= 0)
+      puppetlabs/apt (= 1.4.0)
+      puppetlabs/mysql (= 2.1.0)
+      puppetlabs/postgresql (= 3.2.0)
+      puppetlabs/sqlite (= 0.0.1)
+      puppetlabs/stdlib (= 4.1.0)
+      puppetlabs/vcsrepo (= 0.2.0)
+      rvm (>= 0)
+      samba (>= 0)
+
+GIT
+  remote: https://github.com/jonoterc/puppetlabs-vcsrepo.git
+  ref: fix_svnlook
+  sha: 93b73f6877f9bdfdd291e2dd5ff5b8f6247d833d
+  specs:
+    vcsrepo (0.2.0)
+
+DEPENDENCIES
+  attachmentgenie/ssh (= 1.2.1)
+  example42/monit (= 2.0.13)
+  jonoterc/csrterc (>= 0)
+  netatalk (>= 0)
+  puppetlabs/apache (>= 0)
+  puppetlabs/apt (= 1.4.0)
+  puppetlabs/mysql (= 2.1.0)
+  puppetlabs/postgresql (= 3.2.0)
+  puppetlabs/sqlite (= 0.0.1)
+  puppetlabs/stdlib (= 4.1.0)
+  rvm (>= 0)
+  samba (>= 0)
+  vcsrepo (>= 0)
+
