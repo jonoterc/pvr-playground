@@ -10,10 +10,10 @@ FORGE
       puppetlabs/stdlib (>= 2.2.1)
     puppetlabs/concat (1.1.0-rc1)
       puppetlabs/stdlib (>= 3.0.0)
-    puppetlabs/firewall (0.4.2)
+    puppetlabs/firewall (0.5.0)
     puppetlabs/mysql (2.1.0)
       puppetlabs/stdlib (>= 2.2.1)
-    puppetlabs/postgresql (3.2.0)
+    puppetlabs/postgresql (3.3.0)
       puppetlabs/apt (< 2.0.0, >= 1.1.0)
       puppetlabs/concat (< 2.0.0, >= 1.0.0)
       puppetlabs/firewall (>= 0.0.4)
@@ -59,7 +59,7 @@ GIT
 GIT
   remote: https://github.com/jonoterc/puppet-csrterc.git
   ref: master
-  sha: ee451898f7fe3493a24a47a2cdf2c1a65d67c3af
+  sha: 6d7382a6d2081398fa80fe06d1c9f0b0f1b52f4d
   specs:
     jonoterc/csrterc (0.0.1)
 
@@ -78,7 +78,7 @@ DEPENDENCIES
   puppetlabs/apache (>= 0)
   puppetlabs/apt (= 1.4.0)
   puppetlabs/mysql (= 2.1.0)
-  puppetlabs/postgresql (= 3.2.0)
+  puppetlabs/postgresql (= 3.3.0)
   puppetlabs/sqlite (= 0.0.1)
   puppetlabs/stdlib (= 4.1.0)
   rvm (>= 0)

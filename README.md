@@ -50,11 +50,18 @@ Also, vagrant is configured with 2 synced directories:
 
 ## Logging in and Setting Up
 
-### Fix Working Directory Permissions
+### Set up a Working Directory
 
-As foon as the initial provisioning is completed, a quick edit is required within "vagrant/Vagrantfile"; find the line that begins "config.vm.synced_folder '../working'" and uncomment the "owner" configuration further to the right on the same line.  This will establish the newly-created "dev" user as the owner of the working directory contents.  Next, reload vagrant to make these changes take effect:
+As foon as the initial provisioning is completed, there are a few quick steps to enable a synchronized working directory (in addition to the synchronized directory for vagrant/puppet configuration):
 
-    >  vagrant reload
+1. create a directory named "working" at the top level of the project  (i.e. 
+
+        >  mkdir working
+
+2. edit the Vagrantfile (located under "vagrant/") - un-comment the line that begins "config.vm.synced_folder '../working', '/var/sites/playground'".  This will activate the working folder (which requires/is owned by the the newly-created "dev" user
+3. Next, reload vagrant to make these changes take effect:
+
+        >  vagrant reload
 
 ### Log-in
 
@@ -75,7 +82,7 @@ Now you'll want to set up Rails 4:
     > cd /var/sites  
     > rvm use playground@playground # use the rvm ruby and gemset pre-created for the "playground" app
     > gem install rails --version=4.0.2 # or your preferred Rails version  
-    > rails new playground # installs a new Rails 4 app under /var/sites/  playground
+    > rails new playground # installs a new Rails 4 app under /var/sites/playground
     > cd playground  
 
 Vagrant maps "/var/sites/playground" directory maps to the "working" directory, so you can begin modifiying this rails app skeleton immediately.  
@@ -86,8 +93,8 @@ Your first step should be to edit the Gemfile (in the new Rails app root) and un
 
 Finally, verify that Rails 4 is working in a text-mode browser:
 
-    > lynx http://playground.vm # view the pristine Rails 4 app in a text-mode web browser
+    > lynx http://playground.vm # view the pristine Rails 4 app main page in a text-mode web browser
     
-You can also access this site from a browser on your host OS with nearly the same URL - you'll have to append the forwarded port number (whatever vagrant forwards port 80 to at startup; this can also be looked up via Virtualbox network settings on the running vagrant image).
+You can also access this site from a browser on your host OS with nearly the same URL - you'll have to append the forwarded port number for web traffic (port 80) - this is displayed when vagrant starts/reloads a virtual machine, and can also be looked up via Virtualbox network settings on the running vagrant image.
 
 OK, you're all set to start development; have fun!
