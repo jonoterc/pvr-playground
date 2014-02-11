@@ -14,8 +14,8 @@ A vagrant+puppet-based setup to provide an Ubuntu-based Ruby web-app development
 
 Download this repository, open up the project in your terminal and start the first-time provisioning as follows:
 
-    > cd vagrant/
-    > vagrant up
+    > cd vagrant/ # you'll need to operate vagrant within this directory
+    > vagrant up # boot the virtual machine
 
 This will provision the environment (a 5-10 minutes process) as follows:
 
@@ -30,28 +30,29 @@ Your base box (which is automatically downloaded by Vagrant) provides the follow
 Upon first boot, vagrant will provision this base box via puppet,
 providing the following enhancements:
 
-* Puppet extensions, including
+* Puppet extensions, including:
   * libshadow-based password configuration
   * augeaus-based configuration management
   * librarian-puppet-based module installation
-* Apache
-* Mysql
-* Sqlite
-* Imagemagick
-* Smbd (windows-based) networking
-* Afpd (apple-based) networking
+* basic web-app support software, including:
+  * Apache
+  * Mysql
+  * Sqlite
+  * Imagemagick
+* network connection support, including:
+  * Smbd (windows-based) networking
+  * Afpd (apple-based) networking
 * Ruby Version Manager, including:
   * "playground"-aliased configurations for Ruby 2.x and a fresh gemset
   * Passenger installed and configured to work with Apache ("ready for Rails")
 * virtual host "playground.vm"
-  *  domain is auto-configured on your Host system (to localhost)
-* user "dev" with password "playground"
+  *  domain is auto-configured on your Host system (via the hostmanager plugin)
+* login user "dev" with password "playground"
   * override these passwords via the "puppet/hiera/common.yaml" configuration
 * pre-created personal and MySQL databases, "dev", "playground_development" and "playground_test"
-
-Also, vagrant is configured with 2 synced directories between the Guest and Host systems:
-* the first is this project's "vagrant" directory, which maps to "/vagrant/" on the Guest system
-* the second is this projects' "working" directory, which maps to "/var/sites/playground" on the Guest system
+* 2 synced directories between the Guest and Host systems:
+  * the first is this project's "vagrant" directory, which maps to "/vagrant/" on the Guest system
+  * the second is this projects' "working" directory, which maps to "/var/sites/playground" on the Guest system
 
 ## Logging in and Setting Up
 
@@ -59,14 +60,21 @@ Also, vagrant is configured with 2 synced directories between the Guest and Host
 
 As soon as the initial provisioning is completed, there are a few quick steps to enable the synchronized working directory (in addition to the synchronized directory for vagrant/puppet configuration):
 
-1. create a directory named "working" at the top level of the project  (i.e. 
+1. create a directory named "working" at the top level of the project (parent directory of "vagrant/")
 
-        >  mkdir working
+        > cd ../
+        > mkdir working
 
-2. edit the Vagrantfile (located under "vagrant/") - un-comment the line that begins "config.vm.synced_folder '../working', '/var/sites/playground'".  This will activate the working folder (which requires/is owned by the the newly-created "dev" user
+2. edit the Vagrantfile (located under "vagrant/") - un-comment the following line:
+
+        # config.vm.synced_folder '../working', '/var/sites/playground'  
+        
+   This will activate the working folder (which requires/is owned by the the newly-created "dev" user)
+
 3. Next, reload vagrant to make these changes take effect:
 
-        >  vagrant reload
+        > cd vagrant/ # return to the vagrant directory
+        > vagrant reload # restart the virtual machine
 
 ### Log-in
 
@@ -74,11 +82,11 @@ Once the vagrant environment has reloaded, log-in, which will drop you into the 
 
     > vagrant ssh  
 
-Next, log-in as the user you'll be developing as, "dev":
+You are now logged into the Guest system as the user "vagrant"; now log-in as the user whose account you'll be developing with, "dev":
 
     > su -l dev  
 
-You'll be prompted for the dev user's password to login, which will drop you into that user's home directory.
+You'll be prompted for the dev user's password ("playground"), after which you'll drop into "dev's" home directory.
 
 ### Set up Rails 4
 
@@ -86,13 +94,13 @@ Now you'll want to set up Rails 4:
 
     > cd /var/sites  
     > rvm use playground@playground # use the rvm ruby and gemset pre-created for the "playground" app
-    > gem install rails --version=4.0.2 # or your preferred Rails version  
+    > gem install rails --version=4.0.2 --no-rdoc --no-ri # or your preferred Rails version  
     > rails new playground # installs a new Rails 4 app under /var/sites/playground
     > cd playground  
 
 Vagrant maps "/var/sites/playground" directory maps to the "working" directory, so you can begin modifiying this rails app skeleton from your Host system.  Your first step should be to edit the Gemfile (in the new Rails app root) and uncomment the "therubyracecar" gem (this provides a Javascript engine, which is required by Rails 4's asset pipeline)
 
-    > bundle install # update bundled gems to include therubyracecar
+    > bundle install # update bundled gems to include "therubyracecar"
     > touch tmp/restart.txt # restart the server
 
 Finally, verify that Rails 4 is working in a text-mode browser:
