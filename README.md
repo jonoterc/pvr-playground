@@ -4,7 +4,8 @@ A vagrant+puppet-based setup to provide an Ubuntu-based Ruby web-app development
 * [VirtualBox version 4.30](https://www.virtualbox.org/wiki/Download_Old_Builds)
 * [Vagrant](https://vagrantup.com)
   * after installing vagrant you will need to install the hostmanager plugin:  
-  * \> vagrant plugin install vagrant-hostmanager
+
+        > vagrant plugin install vagrant-hostmanager
 
 # Getting Started
 
@@ -19,6 +20,7 @@ This will provision the environment (a 5-10 minutes process) as follows:
 
 ### Base Box configuration
 Your base box (which is automatically downloaded by Vagrant) provides the following:
+
 * Ubuntu 12.04 LTS virtual machine with support for VirtualBox 4.3.0
 * pre-installed Puppet 3.3.1 support
 * (up to) 32GB of space
@@ -31,28 +33,30 @@ providing the following enhancements:
   * libshadow-based password configuration
   * augeaus-based configuration management
   * librarian-puppet-based module installation
+* Apache
 * Mysql
 * Sqlite
 * Imagemagick
 * Smbd (windows-based) networking
 * Afpd (apple-based) networking
-* Ruby Version Manager 1.2.7, including:
-  * "playground"-aliased installation with Ruby 2.0 and Rails 4.0
+* Ruby Version Manager, including:
+  * "playground"-aliased configurations for Ruby 2.x and a fresh gemset
+  * Passenger installed and configured to work with Apache ("ready for Rails")
 * virtual host "playground.vm"
+  *  domain is auto-configured on your Host system (to localhost)
 * user "dev" with password "playground"
-  * overide these passwords with the "puppet/hiera/common.yaml" configuration
-* pre-created personal MySQL database, "dev"
-* pre-created project MySQL databases, "playground_development" and "playground_test"
+  * override these passwords via the "puppet/hiera/common.yaml" configuration
+* pre-created personal and MySQL databases, "dev", "playground_development" and "playground_test"
 
-Also, vagrant is configured with 2 synced directories:
-* the first is this project's "vagrant" directory, which maps to "/vagrant/" on the guest system
-* the second is this projects' "working" directory, which maps to "/var/sites/playground" on the guest system
+Also, vagrant is configured with 2 synced directories between the Guest and Host systems:
+* the first is this project's "vagrant" directory, which maps to "/vagrant/" on the Guest system
+* the second is this projects' "working" directory, which maps to "/var/sites/playground" on the Guest system
 
 ## Logging in and Setting Up
 
 ### Set up a Working Directory
 
-As foon as the initial provisioning is completed, there are a few quick steps to enable a synchronized working directory (in addition to the synchronized directory for vagrant/puppet configuration):
+As soon as the initial provisioning is completed, there are a few quick steps to enable the synchronized working directory (in addition to the synchronized directory for vagrant/puppet configuration):
 
 1. create a directory named "working" at the top level of the project  (i.e. 
 
@@ -85,16 +89,15 @@ Now you'll want to set up Rails 4:
     > rails new playground # installs a new Rails 4 app under /var/sites/playground
     > cd playground  
 
-Vagrant maps "/var/sites/playground" directory maps to the "working" directory, so you can begin modifiying this rails app skeleton immediately.  
-Your first step should be to edit the Gemfile (in the new Rails app root) and uncomment the "therubyracecar" gem (this provides a Javascript engine, which is required by Rails 4's asset pipeline)
+Vagrant maps "/var/sites/playground" directory maps to the "working" directory, so you can begin modifiying this rails app skeleton from your Host system.  Your first step should be to edit the Gemfile (in the new Rails app root) and uncomment the "therubyracecar" gem (this provides a Javascript engine, which is required by Rails 4's asset pipeline)
 
-    > bundle install # update bundled gems
+    > bundle install # update bundled gems to include therubyracecar
     > touch tmp/restart.txt # restart the server
 
 Finally, verify that Rails 4 is working in a text-mode browser:
 
     > lynx http://playground.vm # view the pristine Rails 4 app main page in a text-mode web browser
     
-You can also access this site from a browser on your host OS with nearly the same URL - you'll have to append the forwarded port number for web traffic (port 80) - this is displayed when vagrant starts/reloads a virtual machine, and can also be looked up via Virtualbox network settings on the running vagrant image.
+You can also access this site from a browser on your Host system by appending the forwarded port number (for web traffic on port 80).  Vagrant displays forwarded port info when starting/reloading a VM, and this info can also be looked up via Virtualbox network settings for the running VM.
 
-OK, you're all set to start development; have fun!
+You're all set to start development; have fun!
