@@ -3,7 +3,7 @@ A vagrant+puppet-based setup to provide an Ubuntu-based Ruby web-app development
 ## Requirements:
 * [VirtualBox version 4.30](https://www.virtualbox.org/wiki/Download_Old_Builds)
 * [Vagrant](https://vagrantup.com), version 1.4.1 or higher
-  * after installing vagrant you will need to install the [hostmanager plugin](https://github.com/smdahlen/vagrant-hostmanager):  
+  after installing vagrant you will need to install the [hostmanager plugin](https://github.com/smdahlen/vagrant-hostmanager):  
 
         > vagrant plugin install vagrant-hostmanager
         > vagrant hostmaster # starts the hostmaster process
